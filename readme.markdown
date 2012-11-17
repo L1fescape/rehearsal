@@ -4,7 +4,7 @@ A collection of snippits and projects written using nodejs to test out the frame
 
 Table of Contents
 -----------------
-+ Hello World
-+ + Need to start somewhere.
+1.	Hello World
+		Need to start somewhere.
 
 

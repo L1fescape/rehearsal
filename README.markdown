@@ -6,4 +6,3 @@ Table of Contents
 -----------------
 * <strong>Hello World</strong> - Need to start somewhere.
 
-

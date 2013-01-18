@@ -1,0 +1,33 @@
+<html
+	<head>
+		<script src="jquery.js"></script>
+	</head>
+	<body>
+		<div class='messages'></div>
+		<input id="input" /><input id="submit" type='submit' />
+	</body>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+	var name = prompt("What's your name?");
+	$("#input").focus();
+
+	function formatText(text) {
+		return text.replace(/[<>/]/g, "");
+	}
+
+	var socket = io.connect('http://localhost');
+	socket.on('receive', function (data) {
+		console.log(data)
+		var sender = formatText(data['name']);
+		var message = formatText(data['message']);
+		$(".messages").append("<strong>" + sender + "</strong>: " + message + "<br />");
+	});
+	function send() {
+		socket.emit('send', { name: name, message: $("#input").val() });
+		$("#input").val("");
+	}
+	
+	$("#submit").click(function() { send(); return false; });
+	$("#input").keyup(function(e) { if (e.which == 13) send(); });
+</script>
+</html>

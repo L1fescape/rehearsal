@@ -6,4 +6,4 @@ Table of Contents
 -----------------
 * <strong>Hello World</strong> - Need to start somewhere.
 * <strong>Http Server</strong> - Most basic of webservers.
-
+* <strong>Chat Server</strong> - Simple chat server.

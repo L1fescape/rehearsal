@@ -17,11 +17,12 @@
 
 	var socket = io.connect('http://localhost');
 	socket.on('receive', function (data) {
-		console.log(data)
 		var sender = formatText(data['name']);
 		var message = formatText(data['message']);
+		console.log(data)
 		$(".messages").append("<strong>" + sender + "</strong>: " + message + "<br />");
 	});
+	
 	function send() {
 		socket.emit('send', { name: name, message: $("#input").val() });
 		$("#input").val("");

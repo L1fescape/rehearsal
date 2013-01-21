@@ -9,7 +9,7 @@ console.log("Listening on port 1337")
 function handler (req, res) {
 	var pathname = url.parse(req.url).pathname;
 	if (pathname == "/") {
-		fs.readFile(__dirname + '/index.html',
+		fs.readFile(__dirname + '/static/index.html',
 		function (err, data) {
 			if (err) {
 				res.writeHead(500);
@@ -21,7 +21,7 @@ function handler (req, res) {
 		});
 	}
 	else if (pathname == "/jquery.js") {
-		fs.readFile(__dirname + '/jquery.js',
+		fs.readFile(__dirname + '/static/jquery.js',
 		function (err, data) {
 			if (err) {
 				res.writeHead(500);

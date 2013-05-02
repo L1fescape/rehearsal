@@ -8,18 +8,18 @@
 	</body>
 <script src="/socket.io/socket.io.js"></script>
 <script>
-	var name = prompt("What's your name?");
-	$("#input").focus();
-
+	var socket = io.connect('10.136.37.120');
+	
 	function formatText(text) {
 		return text.replace(/[<>/]/g, "");
 	}
-
-	var socket = io.connect('http://localhost');
+	
+	var name = prompt("What's your name?");
+	socket.emit('connect', { name: name });
+	
 	socket.on('receive', function (data) {
 		var sender = formatText(data['name']);
 		var message = formatText(data['message']);
-		console.log(data)
 		$(".messages").append("<strong>" + sender + "</strong>: " + message + "<br />");
 	});
 	
@@ -30,5 +30,6 @@
 	
 	$("#submit").click(function() { send(); return false; });
 	$("#input").keyup(function(e) { if (e.which == 13) send(); });
+	$("#input").focus();
 </script>
 </html>

@@ -1,10 +1,11 @@
-var	app = require('http').createServer(handler),
-     io = require('socket.io').listen(app),
-     fs = require('fs')
-		 url = require('url');
+var	app = require('http').createServer(handler)
+   , io = require('socket.io').listen(app)
+   , fs = require('fs')
+	 , url = require('url')
+   , port = 1337;
 
-app.listen(1337);
-console.log("Listening on port 1337")
+app.listen(port);
+console.log("Listening on port", port)
 
 function handler (req, res) {
 	var pathname = url.parse(req.url).pathname;
@@ -32,12 +33,26 @@ function handler (req, res) {
 			res.end(data);
 		});
 	}
+	else {
+		fs.readFile(__dirname + '/static/404.html',
+		function (err, data) {
+			if (err) {
+				res.writeHead(500);
+				return res.end('Error loading 404.html');
+			}
+
+			res.writeHead(200);
+			res.end(data);
+		});
+	}
 }
 
 io.sockets.on('connection', function (socket) {
-	socket.emit('recieve', { hello: 'world' });
+	socket.on('connect', function (data) {
+		io.sockets.emit('receive', { 'name' : data['name'], 'message' : "has connected."});
+	});
+
 	socket.on('send', function (data) {
-		console.log(data);
 		io.sockets.emit('receive', data);
 	});
 });

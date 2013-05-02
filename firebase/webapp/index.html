@@ -1,0 +1,28 @@
+<html>
+<head>
+	<title>Firebase Test</title>
+	<!-- Firebase -->
+	<script type='text/javascript' src='https://cdn.firebase.com/v0/firebase.js'></script>
+</head>
+<body>
+</body>
+<script>
+	// Firebase
+	var firebase = new Firebase('https://fbase-test.firebaseio.com/');
+	// binding for when a child is updated
+	firebase.on('child_added', function(snapshot) {
+		console.log("ADDED");
+		console.log(snapshot.val());
+	});
+	// binding for when a child is removed
+	firebase.on('child_removed', function(snapshot) {
+		console.log("REMOVED");
+		console.log(snapshot.val());
+	});
+	// binding for when a child is updated
+	firebase.on('child_changed', function(snapshot) {
+		console.log("CHANGED");
+		console.log(snapshot.val());
+	});
+</script>
+</html>

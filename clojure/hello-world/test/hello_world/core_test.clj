@@ -1,6 +1,6 @@
-(ns foo.core-test
+(ns hello-world.core-test
   (:use clojure.test
-        foo.core))
+        hello-world.core))
 
 (deftest a-test
   (testing "FIXME, I fail."

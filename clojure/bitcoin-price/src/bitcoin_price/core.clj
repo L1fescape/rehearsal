@@ -8,8 +8,13 @@
   (println (get response `:cookies)))
 
 (defn get-current-price
+  "Gets the current price from a response"
   [response] 
-  (println (get-in (parse-string (get response ':body)) ["return" "last" "display"])))
+  (-> 
+    (get response :body)
+    (parse-string)
+    (get-in ["return" "last" "display"])
+    (println)))
 
 (defn -main
   [& args]

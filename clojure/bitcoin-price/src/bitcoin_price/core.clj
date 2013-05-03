@@ -9,8 +9,7 @@
 
 (defn get-current-price
   [response] 
-  ; wtf this is insane
-  (println (get (get (get (parse-string (get response ':body)) `"return") `"last" ) `"display")))
+  (println (get-in (parse-string (get response ':body)) ["return" "last" "display"])))
 
 (defn -main
   [& args]

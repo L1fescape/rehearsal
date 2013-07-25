@@ -8,8 +8,7 @@ As I'm sure you know, some of the coolest things you discover are through playin
 ### Table of Contents
 
 ##### Clojure
-> "You should learn clojure"
-> - [Marco Munizaga](https://github.com/MarcoPolo)
+> "You should learn clojure" -- [Marco Munizaga](https://github.com/MarcoPolo)
 
 ##### Django
 ##### Flask

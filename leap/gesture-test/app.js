@@ -1,14 +1,7 @@
 var Leap = require('leapjs')
-  , sys = require('sys')
-  , exec = require('child_process').exec
+  , controller = new Leap.Controller({enableGestures:true})
   , direction = require('./gesture-direction')
 
-
-var controller = new Leap.Controller({enableGestures:true});
-var acceptGesture = true;
-function puts(error, stdout, stderr) { sys.puts(stdout); }
-
-console.log(direction)
 
 controller.on("frame", function(frame) {
   if (frame.gestures.length) {
@@ -24,7 +17,6 @@ controller.on("frame", function(frame) {
     }
   }
 });
-
 
 
 // init

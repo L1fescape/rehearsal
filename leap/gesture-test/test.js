@@ -2,7 +2,7 @@ var Leap = require('leapjs')
   , sys = require('sys')
   , exec = require('child_process').exec;
 
-function swipeType(gesture) {
+function swipeDirection(gesture) {
   var xdiff = gesture.startPosition[0] - gesture.position[0]
     , ydiff = gesture.startPosition[1] - gesture.position[1]
     , zdiff = gesture.startPosition[2] - gesture.position[2];
@@ -11,7 +11,7 @@ function swipeType(gesture) {
     { 
       distance : Math.abs(xdiff),
       coordinate : "x",
-      type : (xdiff > 0) ? "right" : "left"
+      type : (xdiff > 0) ? "left" : "right"
     },
     {
       distance : Math.abs(ydiff),
@@ -47,7 +47,7 @@ controller.on("frame", function(frame) {
         acceptGesture = false;
       }
       else if (gesture.type == 'swipe') {
-        var direction = swipeType(gesture);
+        var direction = swipeDirection(gesture);
         exec("echo 'swipe me " + direction + " baby' | say 2>/dev/null", puts);
         console.log("swipe", direction);
         acceptGesture = false;

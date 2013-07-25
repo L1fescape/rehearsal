@@ -1,5 +1,5 @@
 /*global yo, $*/
-'use strict';
+/*'use strict';*/
 
 
 window.yo = {

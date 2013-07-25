@@ -1,0 +1,16 @@
+{
+  "name": "leap-gesture-test",
+  "version": "0.0.0",
+  "description": "",
+  "main": "test.js",
+  "dependencies": {
+    "leapjs": "~0.2.0-beta6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "",
+  "author": "",
+  "license": "BSD"
+}

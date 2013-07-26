@@ -4,7 +4,8 @@
   "description": "",
   "main": "test.js",
   "dependencies": {
-    "leapjs": "~0.2.0-beta6"
+    "leapjs": "~0.2.0-beta6",
+    "curtsy": "0.0.1"
   },
   "devDependencies": {},
   "scripts": {

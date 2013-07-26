@@ -1,6 +1,6 @@
 var Leap = require('leapjs')
   , controller = new Leap.Controller({enableGestures:true})
-  , direction = require('./gesture-direction')
+  , direction = require('curtsy')
 
 
 controller.on("frame", function(frame) {
@@ -10,10 +10,10 @@ controller.on("frame", function(frame) {
       console.log("tap");
     }
     else if (gesture.type == 'swipe') {
-      console.log("swipe", direction.swipe(gesture));
+      console.log("swipe", direction(gesture).type);
     }
     else if (gesture.type == 'circle') {
-      console.log("circle", direction.circle(gesture));
+      console.log("circle", direction(gesture).type);
     }
   }
 });

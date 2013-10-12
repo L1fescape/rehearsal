@@ -1,10 +1,12 @@
 # hello-world
 
-A Clojure library designed to ... well, that part is up to you.
+A Clojure library designed to print "Hello World".
 
 ## Usage
 
-FIXME
+```
+lein run
+```
 
 ## License
 

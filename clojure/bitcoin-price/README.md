@@ -1,32 +1,23 @@
 # bitcoin-price
 
-FIXME: description
+Gets the current bitcoin price from mtgox.
 
 ## Installation
 
-Download from http://example.com/FIXME.
+Install [Leiningen](https://github.com/technomancy/leiningen)
 
 ## Usage
 
-FIXME: explanation
+```
+lein run
+```
 
-    $ java -jar bitcoin-price-0.1.0-standalone.jar [args]
+or
 
-## Options
-
-FIXME: listing of options this app accepts.
-
-## Examples
-
-...
-
-### Bugs
-
-...
-
-### Any Other Sections
-### That You Think
-### Might be Useful
+```
+lein uberjar
+java -jar target/bitcoin-price-0.1.0-SNAPSHOT-standalone.jar
+```
 
 ## License
 

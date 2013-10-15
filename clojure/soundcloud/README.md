@@ -4,15 +4,33 @@ A Clojure library for interacting with the [SoundCloud API](http://developers.so
 
 ## Usage
 
-Create a file called `resources/settings.json` (you can copy from `resources/settings.json.sample`).
-
 ```clojure
-(def settings
-  (get-auth-token (parse-string (slurp "resources/settings.json") true)))
+;; define settings without oauth token
+(def settings {:client-id "[soundcloud api id]" :client-secret "[soundcloud api secret]"})
+;; define settings and generate an oauth token
+(def settings (get-auth-token {:client-id "[soundcloud api id]" :client-secret "[soundcloud api secret]" :username "[soundcloud username]" :password "[soundcloud password]"}))
 
+;; get most recent tracks posted to soundcloud
+(tracks settings)
+
+;; get info about the logged-in user (note: requires oauth token)
 (me settings)
 ;;=> {:country "United States", :plan "Free", :kind "user", ... }
+
+;; get user id of logged-in user
+(get-user-id settings)
+;; get user id from username
+(get-user-id settings "L1fescape")
+
+;; get tacks of logged-in user
+(tracks settings (get-user-id settings))
+;; get tracks of any user
+(tracks settings (get-user-id settings "L1fescape"))
 ```
+
+## API
+
+TODO fix this
 
 ## License
 

@@ -1,6 +1,6 @@
-# Soundcloud
+# SoundCloud
 
-A Clojure library for interacting with the [Soundcloud API](http://developers.soundcloud.com/docs/api/reference).
+A Clojure library for interacting with the [SoundCloud API](http://developers.soundcloud.com/docs/api/reference).
 
 ## Usage
 

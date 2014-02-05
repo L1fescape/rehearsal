@@ -1,0 +1,23 @@
+{
+	"name": "tubeStop",
+	"version": "1.8",
+
+	"description": "Automagically controls stopping	when watching youtube videos!",
+	"icons": {
+		"128": "img/tubeStop.png"
+	},
+	"permissions": ["tabs", "http://*.youtube.com/"],
+	"content_scripts": [
+		{
+			"matches": ["*://*.youtube.com/*"],
+			"js": ["js/injectStop.js"],
+			"run_at": "document_end",
+			"all_frames": true
+		}
+	],
+	"browser_action": {
+		"default_icon": "img/tubeStop.png",
+		"default_title": "App Launcher",
+		"popup": "popup.html"
+	}
+}

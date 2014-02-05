@@ -1,0 +1,54 @@
+<html>
+<head>
+<title>Background</title>
+<style>
+body {
+	width:200px;
+}
+#options {
+font-weight:bold;
+border-bottom:1px solid #333;
+margin-bottom:3px;
+padding-bottom:3px;
+}
+</style>
+</head>
+<body onload="loadOptions()">
+<div id="options">Options</div>
+<form>
+<input style="display:none" type="checkbox" name="quality" id="quality" value="Quality" onchange="set()" />
+<input type="checkbox" name="keyboard" id="keyboard" value="Keyboard" onchange="set()" /> Enable Keyboard Controls
+<div id="val"></div>
+</body>
+<script>
+
+String.prototype.boolean = function() {
+    return "true" == this; 
+};
+
+function loadOptions() {
+	var quality = localStorage['ts_quality'].boolean(); // has to be set to a boolean because it gets stored as a string. I have no fucking idea why. Cause of much frustration.
+	if (quality == undefined) quality = true;
+	document.getElementById('quality').checked = quality;
+
+	var keyboard = localStorage['ts_keyboard'].boolean();
+	if (keyboard == undefined) keyboard = true;
+	document.getElementById('keyboard').checked = keyboard;
+	
+}
+
+function set() {
+	quality = document.getElementById('quality').checked;
+	keyboard = document.getElementById('keyboard').checked;
+	
+	localStorage['ts_keyboard'] = keyboard;
+	localStorage['ts_quality'] = quality;
+	
+	chrome.tabs.getSelected(null, function(tab) {
+		chrome.tabs.sendRequest(tab.id, {quality: quality, keyboard: keyboard}, function(response) {});
+	});
+}
+
+
+</script>
+</html>

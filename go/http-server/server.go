@@ -17,11 +17,10 @@ func parseResponse(request []byte) []string {
   req := bytes.Split(request, []byte("\n"))
   reqInfo := strings.Split(string(req[0]), " ")
 
+  fmt.Println(string(request))
   method := reqInfo[0]
   //url := reqInfo[1]
   var body []byte = req[len(req) - 1]
-
-  fmt.Println(string(body))
 
   resp := []string{"HTTP/1.1 200 OK\r\n\r\n"}
 
@@ -32,9 +31,7 @@ func parseResponse(request []byte) []string {
       var person Person
       err := json.Unmarshal(body, &person)
       if err != nil { panic(err) }
-      resp = append(resp, "Hi there ")
-      resp = append(resp, person.Name)
-      resp = append(resp, "!")
+      resp = append(resp, "Hi there ", person.Name, "!")
   }
   return resp
 }

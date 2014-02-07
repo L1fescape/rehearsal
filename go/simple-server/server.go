@@ -11,6 +11,8 @@ func handleConnection(conn net.Conn) {
   n, err := conn.Read(data)
   if err != nil { panic(err)  }
   s := string(data[:n])
+  
+  // print the request data
   fmt.Println(s)
 
   // send a response

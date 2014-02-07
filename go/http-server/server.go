@@ -3,7 +3,6 @@ package main
 import (
   "net"
   "fmt"
-  "strings"
   "bytes"
   "encoding/json"
 )
@@ -15,10 +14,10 @@ type Person struct {
 
 func parseResponse(request []byte) []string {
   req := bytes.Split(request, []byte("\n"))
-  reqInfo := strings.Split(string(req[0]), " ")
+  reqInfo := bytes.Split(req[0], []byte(" "))
 
   fmt.Println(string(request))
-  method := reqInfo[0]
+  method := string(reqInfo[0])
   //url := reqInfo[1]
   var body []byte = req[len(req) - 1]
 

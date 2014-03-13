@@ -12,8 +12,8 @@ A couple different implementations of http servers in nodejs.
 - <strong>export-server.js</strong> 
 - <strong>index.js</strong>
 
-
 <h3>Routes</h3>
 <p>Routing example.</p>
 
-
+<h3>Static</h3>
+<p>A static content server</p>

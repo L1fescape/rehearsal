@@ -10,7 +10,11 @@
 (defn get-current-price
   "Gets the current price from a response"
   [response] 
-  (println (get (parse-string (get response :body)) "last")))
+  (->
+    (get response :body)
+    (parse-string)
+    (get "last")
+    (println)))
 
 (defn -main
   [& args]

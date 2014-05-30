@@ -10,13 +10,8 @@
 (defn get-current-price
   "Gets the current price from a response"
   [response] 
-  (-> 
-    (get response :body)
-    (parse-string)
-    (get-in ["return" "last" "display"])
-    (println)))
+  (println (get (parse-string (get response :body)) "last")))
 
 (defn -main
   [& args]
-  (get-current-price (client/get "http://data.mtgox.com/api/1/BTCUSD/ticker")))
-
+  (get-current-price (client/get "https://www.bitstamp.net/api/ticker/")))
